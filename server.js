@@ -23,29 +23,24 @@ app.use(express.static('website'));
 
 
 /// setup a basic POST route 
-
 app.post('/add', addProjectData )
 function addProjectData (req, res){
-  newEntry = {
-    temp: req.body.temp,
-    date: req.body.date,
-    content: req.body.content, 
-  }
-  weatherData.push(newEntry)
-  console.log(weatherData)
-  return res.send(weatherData)
+  projectData.temp = req.body.temp
+  projectData.date = req.body.date
+  projectData.content = req.body.content
+  console.log(projectData)
+  return res.send(projectData)
 }
 
 
 // TODO-GET route for /all
 app.get('/all', getAllProjectData )
 function getAllProjectData (req, res){
-  //weatherData is [ {{temp}, date, feelings} ]
   return res.send(projectData)
 }
 
 //creating local server 
-const port = 5000;
+const port = 9000;
 app.listen(
   port,
   () => console.log(`Server Running On Port ${port}...`)
